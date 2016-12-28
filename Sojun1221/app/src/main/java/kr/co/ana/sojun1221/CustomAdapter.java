@@ -36,22 +36,40 @@ public class CustomAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //xml 불러오고
-        //데이터를 직접 넣어주고
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, null);
-
-        ImageView imageView = (ImageView)view.findViewById(R.id.imageView);
-        TextView textViewId = (TextView)view.findViewById(R.id.textViewId);
-        TextView textViewName = (TextView)view.findViewById(R.id.textViewName);
 
         //여러 학생 중 특정 position에 있는 한 학생을 불러온다.
         Student stu = studentList.get(position);
 
+        boolean isLeft = stu.isLeft();
         String id = String.valueOf(stu.getId());
         String name = stu.getName();
 
-        textViewId.setText(id);
-        textViewName.setText(name);
-        return view;
+        //xml 불러오고
+        //데이터를 직접 넣어주고
+        if(isLeft){
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, null);
+
+            ImageView imageView = (ImageView)view.findViewById(R.id.imageView);
+            TextView textViewId = (TextView)view.findViewById(R.id.textViewId);
+            TextView textViewName = (TextView)view.findViewById(R.id.textViewName);
+
+            textViewId.setText(id);
+            textViewName.setText(name);
+
+            return view;
+        }
+
+        else {
+            View view2 = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout2, null);
+            ImageView imageView2 = (ImageView) view2.findViewById(R.id.imageView2);
+            TextView textViewId2 = (TextView) view2.findViewById(R.id.textViewId2);
+            TextView textViewName2 = (TextView) view2.findViewById(R.id.textViewName2);
+
+            textViewId2.setText(id);
+            textViewName2.setText(name);
+
+            return view2;
+        }
+
     }
 }

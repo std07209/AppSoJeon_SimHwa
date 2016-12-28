@@ -23,33 +23,36 @@
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/year"
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/spinner_y"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"/>
+        android:entries="@array/year">
+    </Spinner>
 
     <TextView
         android:text="월"
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/month"
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/spinner_m"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"/>
+        android:entries="@array/month">
+    </Spinner>
 
     <TextView
         android:text="일"
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/day"
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/spinner_d"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"/>
+        android:entries="@array/day">
+    </Spinner>
 
     <Button
         android:id="@+id/btn"

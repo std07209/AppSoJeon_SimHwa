@@ -1,12 +1,23 @@
 package kr.co.ana.sojun1221;
 
 public class Student {
+
+    boolean isLeft;
     String name;
     long id;
 
-    public Student(String name, long id) {
+    public Student(boolean isLeft, String name, long id) {
+        this.isLeft = isLeft;
         this.name = name;
         this.id = id;
+    }
+
+    public boolean isLeft() {
+        return isLeft;
+    }
+
+    public void setIsLeft(boolean isLeft) {
+        this.isLeft = isLeft;
     }
 
     public String getName() {

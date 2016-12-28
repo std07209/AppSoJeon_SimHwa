@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText et1;
-    EditText et2;
-    EditText et3;
+    EditText et_y;
+    EditText et_m;
+    EditText et_d;
     Button btn;
 
     @Override
@@ -21,17 +21,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        et1 = (EditText)findViewById(R.id.year);
-        et2 = (EditText)findViewById(R.id.month);
-        et3 = (EditText)findViewById(R.id.day);
+        et_y = (EditText)findViewById(R.id.year);
+        et_m = (EditText)findViewById(R.id.month);
+        et_d = (EditText)findViewById(R.id.day);
         btn = (Button)findViewById(R.id.btn);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer year = Integer.valueOf(et1.getText().toString());
-                Integer month = Integer.valueOf(et2.getText().toString());
-                Integer day = Integer.valueOf(et3.getText().toString());
+                Integer year = Integer.valueOf(et_y.getText().toString());
+                Integer month = Integer.valueOf(et_m.getText().toString());
+                Integer day = Integer.valueOf(et_d.getText().toString());
 
                 if(month <= 0 || month >= 13 || day <= 0 || day >= 32){
                     Toast.makeText(MainActivity.this, "오류 발생", Toast.LENGTH_SHORT).show();
