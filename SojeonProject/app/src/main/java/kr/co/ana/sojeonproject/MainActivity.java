@@ -1,11 +1,16 @@
 package kr.co.ana.sojeonproject;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,21 @@ public class MainActivity extends AppCompatActivity {
         initEditText();
         initButton();
         initListView();
+
+        listPM.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                RealmResults<PocketMoney> all = realm.where(PocketMoney.class).findAll();
+                PocketMoney pocketMoney = all.get(position);
+
+                realm.beginTransaction();
+                pocketMoney.deleteFromRealm();
+                realm.commitTransaction();
+
+                customAdapter = new CustomAdapter(getStus());
+                listPM.setAdapter(customAdapter);
+            }
+        });
     }
     private void initRealm(){
         Realm.init(getApplicationContext());
@@ -41,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void initListView(){
         listPM = (ListView) findViewById(R.id.listview);
-        customAdapter = new CustomAdapter(getPocketMoney());
+        customAdapter = new CustomAdapter(getPocketMoneys());
         listPM.setAdapter(customAdapter);
     }
 
     private void initButton(){
-        btnAdd = (Button) findViewById(R.id.btn);
+        btnAdd = (Button) findViewById(R.id.btn_add);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 pocketMoney.setIn(in);
                 pocketMoney.setOut(out);
                 realm.commitTransaction();
-                getPocketMoney();
+                getPocketMoneys();
                 customAdapter.notifyDataSetChanged();
             }
         });
@@ -74,12 +94,22 @@ public class MainActivity extends AppCompatActivity {
         edit_o = (EditText) findViewById(R.id.et_out);
     }
 
-    private List<PocketMoney> getPocketMoney(){
+    private List<PocketMoney> getPocketMoneys(){
         RealmResults<PocketMoney> pocketMoneys = realm.where(PocketMoney.class).findAll();
         pocketMoneyList.clear();
         for (PocketMoney pocketMoney : pocketMoneys){
             pocketMoneyList.add(pocketMoney);
         }
         return pocketMoneyList;
+    }
+
+    private List<PocketMoney> getStus() {
+        RealmResults<PocketMoney> all = realm.where(PocketMoney.class).findAll();
+        pocketMoneyList = new ArrayList<>();
+        for (int i = 0; i < all.size(); i++) {
+            pocketMoneyList.add(all.get(i));
+        }
+        return pocketMoneyList;
+
     }
 }

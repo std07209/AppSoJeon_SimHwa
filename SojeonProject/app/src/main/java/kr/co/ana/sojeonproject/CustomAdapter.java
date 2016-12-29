@@ -17,13 +17,11 @@ public class CustomAdapter extends BaseAdapter{
     public CustomAdapter(List<PocketMoney> pocketMoneys) {this.pocketMoneys = pocketMoneys;}
 
     @Override
-    public int getCount() {
-        return 0;
-    }
+    public int getCount() { return pocketMoneys.size();}
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return pocketMoneys.get(position);
     }
 
     @Override
@@ -45,10 +43,10 @@ public class CustomAdapter extends BaseAdapter{
         TextView text_i = (TextView) view.findViewById(R.id.text_in);
         TextView text_o = (TextView) view.findViewById(R.id.text_out);
 
-        text_m.setText(pocketMoney.getMonth());
-        text_d.setText(pocketMoney.getDay());
-        text_i.setText(pocketMoney.getIn());
-        text_o.setText(pocketMoney.getOut());
+        text_m.setText(pocketMoney.getMonth() + "월");
+        text_d.setText(pocketMoney.getDay() + "일");
+        text_i.setText(pocketMoney.getIn() + "원");
+        text_o.setText(pocketMoney.getOut() + "원");
 
         return view;
     }

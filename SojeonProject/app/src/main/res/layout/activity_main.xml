@@ -45,11 +45,37 @@
 
     </LinearLayout>
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add"
+        android:layout_gravity="center"/>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SAVE"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Month"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Day"
+            android:layout_marginLeft="10dp"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="In"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Out"
+            android:textSize="25sp"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/listview"
         android:layout_width="wrap_content"

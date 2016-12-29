@@ -4,13 +4,14 @@ import io.realm.RealmObject;
 import io.realm.annotations.Index;
 
 public class PocketMoney extends RealmObject{
-    @Index
     String month;
     String day;
     String in;
     String out;
 
-    public PocketMoney(String month, String out, String in, String day) {
+    public PocketMoney(){}
+
+    public PocketMoney(String month, String out, String in, String day, int tot) {
         this.month = month;
         this.out = out;
         this.in = in;
@@ -33,9 +34,7 @@ public class PocketMoney extends RealmObject{
         this.day = day;
     }
 
-    public String getIn() {
-        return in;
-    }
+    public String getIn() {return in;}
 
     public void setIn(String in) {
         this.in = in;
@@ -48,4 +47,5 @@ public class PocketMoney extends RealmObject{
     public void setOut(String out) {
         this.out = out;
     }
+
 }
